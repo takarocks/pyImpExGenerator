@@ -1,2 +1,2 @@
-# impex-generator
-SAP Commerce Cloud ImpEx generator
+# pyImpExGenerator
+Python 3 SAP Commerce Cloud ImpEx generator
