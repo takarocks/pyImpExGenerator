@@ -7,7 +7,7 @@ Python SAP Commerce Cloud ImpEx generator
 
 # Version
 * 0.1
-  * Product medias impex including imagemagick conversion
+  * Product medias impex generation including media conversion by ImageMagick
 
 # How to use
 ## Product Media ImpEx generation
@@ -23,13 +23,13 @@ Python SAP Commerce Cloud ImpEx generator
 
 ### Steps
 
-  1. Configure *config.py* and *input.csv*. See following Configuration section for more details.
+  1. Configure **config.py** and **productMedias.csv**. See following Configuration section for more details.
   2. Locate your source images in your python program execution directory. Do not locate the files in any subdirectory.
   3. Open Terminal or Command Prompt and execute python program as follows
 
      `python productMedias -f productMedias.csv`
-  4. Confirm two files produced, *images.zip* and *productMedia.impex*. You can ignore/delete images directories.
-  5. Upload and extract *images.zip* onto your Commerce instance under /home/hybris/hybris/temp. Following directories are populated along with converted medias.
+  4. Confirm two files produced, **images.zip** and **productMedias.impex**. You can ignore/delete images directories.
+  5. Upload and extract **images.zip** onto your Commerce instance under /home/hybris/hybris/temp. Following directories are populated along with converted medias.
 
      ```
      images
@@ -60,7 +60,7 @@ Python SAP Commerce Cloud ImpEx generator
 |IMAGEMAGICK|sizes     |     |Do not modify unless you have different media format|
 |HYBRIS     |catalog   |electronicsProductCatalog|Product catalog name            |
 
-## input.csv
+## productMedias.csv
 
 ```
 product_id_1,image_filename_1
