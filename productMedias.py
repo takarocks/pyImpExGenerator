@@ -28,7 +28,7 @@ sizes           = tuple(os.getenv('IMAGEMAGICK_SIZES',config.IMAGEMAGICK['sizes'
 catalog         = os.getenv('HYBRIS_CATALOG',config.HYBRIS['catalog'])
 
 def generateImpEx(filepath):
-    with open('productMedia.impex','w') as impex:
+    with open('productMedias.impex','w') as impex:
         impex.write('# ImPex for Importing Product Media\n')
         impex.write('\n')
         impex.write('$productCatalog=' + catalog + '\n')
@@ -90,7 +90,6 @@ def createImageDirectories():
             os.makedirs('images/' + d)
 
 def convertMedias(media):
-    cwd = os.getcwd()
     for i in range(len(sizes)):
         cmd = [imagemagick_bin + 'convert',media,'-thumbnail',sizes[i] + thumbnail,'-background',background,'-gravity','center','-extent',sizes[i],'images/' + outputdirs[i] + '/' + media]
         print(cmd)
