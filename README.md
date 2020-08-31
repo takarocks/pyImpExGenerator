@@ -11,6 +11,18 @@ Python SAP Commerce Cloud ImpEx generator
 
 # How to use
 ## Product Media ImpEx generation
+
+### Output images
+
+| Format | Thumbnail Option | Image |
+|--|--|--|
+| Source | N/A | ![Original Image](_assets/P8150790-original.jpg) |
+| Cut | ^ | ![Cut to Fit](_assets/P8150790-cut.jpg) |
+| Padded | (blank) |  ![Padded](_assets/P8150790-padded.jpg) |
+
+
+### Steps
+
   1. Configure *config.py* and *input.csv*. See following Configuration section for more details.
   2. Locate your source images in your python program execution directory. Do not locate the files in any subdirectory.
   3. Open Terminal or Command Prompt and execute python program as follows
