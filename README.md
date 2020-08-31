@@ -7,7 +7,7 @@ Python SAP Commerce Cloud ImpEx generator
 
 # Version
 * 0.1
- * Product medias impex including imagemagick conversion
+  * Product medias impex including imagemagick conversion
 
 # How to use
 ## Product Media ImpEx generation
