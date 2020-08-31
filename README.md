@@ -16,9 +16,9 @@ Python SAP Commerce Cloud ImpEx generator
 
 | Format | Thumbnail Option | Image |
 |--|--|--|
-| Source | N/A | ![Original Image](_assets/P8150790-original.jpg) |
-| Cut | ^ | ![Cut to Fit](_assets/P8150790-cut.jpg) |
-| Padded | (blank) |  ![Padded](_assets/P8150790-padded.jpg) |
+| Source | N/A | <kbd><img src='_assets/P8150790-original.jpg'/></kbd> |
+| Cut | ^ | <kbd><img src='_assets/P8150790-cut.jpg'/></kbd> |
+| Padded | (blank) |  <kbd><img src='_assets/P8150790-padded.jpg'/></kbd> |
 
 
 ### Steps
