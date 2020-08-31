@@ -16,8 +16,8 @@ Python SAP Commerce Cloud ImpEx generator
   3. Open Terminal or Command Prompt and execute python program as follows
 
      `python productMedias -f input.csv`
-  4. Confirm images.zip and productMedia.impex are generated.
-  5. Upload and extract images.zip under /home/hybris/hybris/temp. Following directories are populated along with converted medias.
+  4. Confirm two files produced, *images.zip* and *productMedia.impex*. You can ignore/delete images directories.
+  5. Upload and extract *images.zip* onto your Commerce instance under /home/hybris/hybris/temp. Following directories are populated along with converted medias.
 
      ```
      images
