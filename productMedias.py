@@ -7,7 +7,7 @@
 #
 # Author:    takarocks
 # Date:      Aug 29, 2020
-# Version:   0.1
+# Version:   0.2
 # Python:    3.7.x
 #
 #######################################
@@ -51,12 +51,16 @@ def generateImpEx(filepath):
         impex.write("INSERT_UPDATE Media;mediaFormat(qualifier);code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];realfilename;mime;$catalogVersion;folder(qualifier)[default=images]\n")
         f = open(filepath, 'r')
         for line in f:
+            # Split by comma and get images
             input = line.strip().split(',')
-            format = 'image/jpeg'
-            if (input[1].split('.')[1] == 'png'):
-                format = 'image/png'
-            for d in outputdirs:
-                impex.write(';' + d + ';' + d + '/' + input[1] + ';$siteResource/' + d + '/' + input[1] + ';' + input[1] + ';' + format + '\n')
+            # 0.2 Split by pipe | to get multiple images
+            images = input[1].strip().split('|')
+            for image in images:
+                format = 'image/jpeg'
+                if (image.split('.')[1].lower() == 'png'):
+                    format = 'image/png'
+                for d in outputdirs:
+                    impex.write(';' + d + ';' + d + '/' + image + ';$siteResource/' + d + '/' + image + ';' + image + ';' + format + '\n')
         f.close()
 
         # MEDIA CONTAINER
@@ -65,23 +69,54 @@ def generateImpEx(filepath):
         impex.write("INSERT_UPDATE MediaContainer;qualifier[unique=true];$medias[collection-delimiter = ,];$catalogVersion;\n")
         f = open(filepath, 'r')
         for line in f:
+            # Split by comma and get images9
             input = line.strip().split(',')
-            container = ';' + input[1].split('.')[0] + '-container;'
-            for i in range(len(outputdirs)):
-                container = container + outputdirs[i] + '/' + input[1]
-                if i < len(outputdirs) - 1:
-                    container = container + ','
-            impex.write(container + '\n')
+            # 0.2 Split by pipe | to get multiple images
+            images = input[1].strip().split('|')
+            for image in images:
+                container = ';' + image.split('.')[0] + '-container;'
+                for i in range(len(outputdirs)):
+                    container = container + outputdirs[i] + '/' + image
+                    if i < len(outputdirs) - 1:
+                        container = container + ','
+                impex.write(container + '\n')
         f.close()
 
         # PRODUCT MEDIA
         impex.write('\n')
         impex.write('### PRODUCT MEDIA UPDATE ###\n')
-        impex.write("UPDATE Product;code[unique=true];$picture;$thumbnail;$galleryImages;$catalogVersion;;\n")
+#        impex.write("UPDATE Product;code[unique=true];$picture;$thumbnail;$galleryImages;$catalogVersion;;\n")
+        impex.write("UPDATE Product;code[unique=true];$picture;$thumbnail;$normal;$detail;$thumbnails;$others;$galleryImages;$catalogVersion;;\n")
         f = open(filepath, 'r')
         for line in f:
             input = line.strip().split(',')
-            impex.write(';' + input[0] + ';300Wx300H/' + input[1] + ';96Wx96H/' + input[1] + ';' + input[1].split('.')[0] + '-container\n')
+            # 0.2 Split by pipe | to get multiple images, iterate for containers but use the first one for other images
+            images = input[1].strip().split('|')
+            # code
+            impex.write(';' + input[0])
+            # picture
+            impex.write(';300Wx300H/' + images[0])
+            # thumbnail
+            impex.write(';96Wx96H/' + images[0])
+            # normal
+            impex.write(';300Wx300H/' + images[0])
+            # detail
+            impex.write(';1200Wx1200H/' + images[0])
+            # thumbnails
+            impex.write(';96Wx96H/' + images[0])
+            # others
+            impex.write(';1200Wx1200H/' + images[0] + ',515Wx515H/' + images[0] + ',300Wx300H/' + images[0] + ',96Wx96H/' + images[0] + ',65Wx65H/' + images[0] + ',30Wx30H/' + images[0])
+            # galleryImages
+            impex.write(';')
+            i = 1
+            for image in images:
+                print(image)
+                impex.write(image.split('.')[0] + '-container')
+                if i < len(images):
+                    impex.write(',')
+                else:
+                    impex.write('\n')
+                i = i + 1
         f.close()
 
 def createImageDirectories():
