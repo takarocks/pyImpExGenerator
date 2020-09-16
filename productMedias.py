@@ -25,14 +25,15 @@ background      = os.getenv('IMAGEMAGICK_BACKGROUND',config.IMAGEMAGICK['backgro
 outputdirs      = tuple(os.getenv('IMAGEMAGICK_OUTPUTDIRS',config.IMAGEMAGICK['outputdirs']).split(','))
 sizes           = tuple(os.getenv('IMAGEMAGICK_SIZES',config.IMAGEMAGICK['sizes']).split(','))
 
-catalog         = os.getenv('HYBRIS_CATALOG',config.HYBRIS['catalog'])
+prod_catalog         = os.getenv('HYBRIS_PROD_CATALOG',config.HYBRIS['prodcatalog'])
+prod_cat_version     = os.getenv('HYBRIS_PROD_CATALOG_VERSION',config.HYBRIS['prodcatversion'])
 
 def generateImpEx(filepath):
     with open('productMedias.impex','w') as impex:
         impex.write('# ImPex for Importing Product Media\n')
         impex.write('\n')
-        impex.write('$productCatalog=' + catalog + '\n')
-        impex.write('$ver=Staged\n')
+        impex.write('$productCatalog=' + prod_catalog + '\n')
+        impex.write('$ver=' + prod_cat_version + '\n')
         impex.write("$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='$ver'])[unique=true,default=$productCatalog:$ver]\n")
         impex.write('$siteResource=file:////home/hybris/hybris/temp/images\n')
         impex.write('\n')
@@ -144,9 +145,10 @@ def main(argv):
             createImageDirectories()
             f = open(arg, 'r')
             for line in f:
-                media = line.strip().split(',')[1]
-                print(media)
-                convertMedias(media)
+                medias = line.strip().split(',')[1].split('|')
+                for media in medias:
+                    print(media)
+                    convertMedias(media)
             f.close()
             generateImpEx(arg)
         else:
