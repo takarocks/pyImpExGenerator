@@ -7,12 +7,13 @@
 
 IMAGEMAGICK = {
   'path'      : '/usr/local/bin/',
-  'thumbnail' : '^',
+  'thumbnail' : '',
   'background': 'white',
   'outputdirs': '30Wx30H,65Wx65H,96Wx96H,300Wx300H,515Wx515H,1200Wx1200H',
   'sizes'     : '30x30,65x65,96x96,300x300,515x515,1200x1200'
 }
 
 HYBRIS = {
-  'catalog'   : 'electronicsProductCatalog'
+  'prodcatalog'   : 'electronicsProductCatalog',
+  'prodcatversion': 'Staged'
 }
