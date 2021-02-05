@@ -13,7 +13,7 @@ Set of Python command line programs help generating ImpEx files for SAP Commerce
   * Apparel Product Variants impex generation supported.
 
 # How to use
-## <span style="color:#0059A7">Apparel Product Variants ImpEx generation</span>
+## <span style="color:#0059A7">■ Apparel Product Variants ImpEx generation</span>
 ### Syntax
 
 `python apparelProducts.py -f FILENAME`
@@ -31,7 +31,7 @@ You must add your data from ApparelProduct, ApparelStyleVariantProduct and Appar
 
 
 
-## <span style="color:#0059A7">Product Media ImpEx generation</span>
+## <span style="color:#0059A7">■ Product Media ImpEx generation</span>
 
 ### Syntax
 
