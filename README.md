@@ -13,21 +13,31 @@ Set of Python command line programs help generating ImpEx files for SAP Commerce
   * Apparel Product Variants impex generation supported.
 
 # How to use
-## Apparel Product Variants ImpEx generation
+## <span style="color:#0059A7">Apparel Product Variants ImpEx generation</span>
+### Syntax
+
+`python apparelProducts.py -f FILENAME`
+
+### Abstract
+
 apparelProducts.py generates ImpEx files for ApparelProduct, ApparelStyleVariantProduct and ApparelSizeVariantProduct in single impex file, apparelProducts.impex.
 
 You must use the sample appparelProducts.csv to create your data set. Modification of columns will not work, you must use the given column order in apparelProducts.csv. Never remove header line, never modify columns.
 Data lines after line 2 is samples. You can remove them and have your own data. Please refer to apparelProducts-sample.csv for how you can add your own data.
 
-**IMPORTANT**
+<span style="color:red">**IMPORTANT !!**</span>
 
 You must add your data from ApparelProduct, ApparelStyleVariantProduct and ApparelSizeVariantProduct. Never mix them. Please refer to apparelProducts-sample.csv for the actual samples and orders you need to follow.
 
+
+
+## <span style="color:#0059A7">Product Media ImpEx generation</span>
+
 ### Syntax
 
-python apparelProducts.py -f FILENAME
+`python productMedias.py -f productMedias.csv`
 
-## Product Media ImpEx generation
+### Abstract
 
 productMedias.py helps generating ImpEx files and converting source images into various formats. config.py file provides additional configuraion options. Please modify configy.py accordingly to fit your needs.
 
